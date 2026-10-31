@@ -688,3 +688,18 @@ h4.cankao {
   color: #555;
   margin-top: 1.2em;
 }
+
+/* 古文字形（甲骨文/金文等无法编码的字形）：行内 SVG。
+   由 scripts/glyph.sh 从 600dpi 扫描页裁切矢量化，Markdown 写法：
+   ![字形释读](assets/glyphs/xxx.svg){.glyph}
+   覆盖全局 img 规则（全局为整页图版的块级居中），行内字形高 1em 随文排 */
+img.glyph {
+  display: inline;
+  height: 1.05em;
+  width: auto;
+  margin: 0 0.05em;
+  padding: 0;
+  max-width: none;
+  max-height: none;
+  vertical-align: -0.12em;
+}
