@@ -14,6 +14,7 @@
 | `assets/epub.css` | EPUB 样式（正文用阅读器默认字体；标题黑体 / 导读与引文楷体 / 扉页仿宋，字体栈取自 [fonts.css](https://github.com/zenozeng/fonts.css) 跨平台方案） |
 | `assets/cover.jpg` | 封面图 |
 | `scripts/ocr.sh` | MinerU 双模式分片识别（200 页/片，断点续跑） |
+| `scripts/glyph.sh` | 古文字形制作（600dpi 裁切 → potrace SVG 或 PNG 位图，坐标定位见 `docs/workflow.md`） |
 | `scripts/build.sh` | pandoc 构建脚本（`--split-level=2` 按篇拆分文件即硬分页；CSS 剥注释后打包，兼容 Clearview） |
 | `scripts/ascii-heading-ids.lua` | pandoc Lua 过滤器：标题锚点改写为 ASCII 序号（sec-N），否则中文锚点在 Clearview 等阅读器中目录无法跳转 |
 | `Makefile` | `make build` 构建，`make ocr` 识别，`make clean` 清理 |
@@ -49,6 +50,7 @@ make clean    # 删除构建产物
 - `文字^[注释内容]`：行内脚注（EPUB 3 弹注；原书篇末编号注〔N〕一律转为行内脚注，不用 `[^n]` 编号式）
 - `**文字**`：黑体强调；`*文字*`：楷体（中文不倾斜）
 - `::: {.fangsong}`：扉页信息、出版说明（仿宋）
+- `![释读](assets/glyphs/xxx.svg){.glyph}`：行内古文字形（甲骨文/金文 SVG，由 `scripts/glyph.sh` 制作）；字形阵列整组裁为一张图、独占段落、不加 `.glyph`
 - 拿不准的字，加 HTML 注释 `<!-- 疑：原书作「x」 -->` 留待复核
 
 ## 致谢
